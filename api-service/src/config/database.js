@@ -11,8 +11,9 @@ const pool = new Pool({
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
     ssl: {
-    rejectUnauthorized: false  // Required in most Render cases to skip cert verification
-  }
+        require: true,               // ← This forces SSL negotiation
+        rejectUnauthorized: false
+    },
 });
 
 pool.on("error", (err) => {
